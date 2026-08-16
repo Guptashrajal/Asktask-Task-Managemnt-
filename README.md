@@ -1,6 +1,12 @@
 # AskTask
 
-AskTask is a full-stack task management application designed to help users create, organize, prioritize, schedule, and complete their tasks from a single dashboard. It also provides reminders, browser notifications, and AI-assisted task suggestions and workload analysis.
+AskTask is a full-stack task management application designed to help users create, organize, prioritize, schedule, and complete tasks from a single dashboard. It also provides reminders, browser notifications, and AI-assisted task suggestions and workload analysis.
+
+## Live Project
+
+Live Application: [https://smart-task-management-nine.vercel.app/](https://smart-task-management-nine.vercel.app/)
+
+GitHub Repository: [https://github.com/Guptashrajal/smart-task-management](https://github.com/Guptashrajal/smart-task-management)
 
 ## Features
 
@@ -9,7 +15,7 @@ AskTask is a full-stack task management application designed to help users creat
 * User registration and login
 * JWT-based authentication
 * Password hashing using bcrypt
-* Password reset through email
+* Password reset through email using Brevo
 
 ### Task Management
 
@@ -29,15 +35,15 @@ Each task can contain:
 
 Tasks support three priority levels:
 
-* **High**
-* **Medium**
-* **Low**
+* High
+* Medium
+* Low
 
 High-priority and overdue tasks are highlighted to help users focus on important work.
 
 ### Dashboard
 
-The dashboard provides a quick overview of the user's workload, including:
+The dashboard provides an overview of the user's workload, including:
 
 * Total tasks
 * Pending tasks
@@ -49,7 +55,7 @@ The dashboard provides a quick overview of the user's workload, including:
 
 ### Search, Filter and Sort
 
-Users can quickly find and organize tasks using:
+Users can search, filter, and organize tasks using:
 
 * Task search
 * Priority filtering
@@ -64,25 +70,19 @@ Users can quickly find and organize tasks using:
 
 Users can assign reminder dates and times to tasks.
 
-The application also uses browser notifications to highlight upcoming reminders and overdue tasks.
+The application uses the Browser Notifications API to provide notifications for upcoming reminders and overdue tasks.
 
 ### Schedule
 
-The schedule view helps users organize and review tasks according to their due dates, making upcoming work easier to track.
+The schedule view helps users organize and review tasks according to their due dates.
 
 ### AI Task Assistant
 
-AskTask integrates the **Google Gemini API** to convert general goals into actionable tasks.
-
-For example, a user can provide a goal such as:
-
-> Prepare for a software engineering interview.
-
-The AI can generate relevant tasks based on that goal.
+AskTask integrates the Google Gemini API to convert general goals into actionable tasks.
 
 ### AI Task Summary
 
-The AI functionality can analyze the user's existing tasks and provide a concise workload summary covering areas such as:
+The AI functionality analyzes existing tasks and provides workload insights related to:
 
 * Important priorities
 * Upcoming deadlines
@@ -92,129 +92,139 @@ The AI functionality can analyze the user's existing tasks and provide a concise
 
 ### Responsive Design
 
-The application supports desktop and mobile layouts. Task cards, filters, metadata, buttons, and other dashboard elements adapt to smaller screen sizes for better usability.
+The application supports desktop and mobile layouts with responsive task cards, filters, metadata, buttons, and dashboard components.
 
 ### Theme Support
 
-The interface supports theme switching and uses reusable CSS variables for consistent colors, surfaces, borders, text, and status indicators.
-
----
+The application supports light and dark themes with consistent UI styling.
 
 ## Technology Stack
 
 ### Frontend
 
-* **React** — builds the user interface and manages application state.
-* **Vite** — frontend development and build tooling.
-* **JavaScript / JSX** — application logic and React components.
-* **CSS** — responsive layout, styling, themes, task cards, and dashboard UI.
+* React
+* Vite
+* JavaScript / JSX
+* CSS
 
 ### Backend
 
-* **Node.js** — backend runtime.
-* **Express.js** — creates and handles REST APIs.
-* **REST APIs** — communication between the frontend and backend.
+* Node.js
+* Express.js
+* REST APIs
 
 ### Database
 
-* **MongoDB** — stores application data such as users and tasks.
-* **Mongoose** — ODM used by the Node.js backend to define models/schemas and perform database operations with MongoDB.
+* MongoDB
+* Mongoose
 
 ### Authentication
 
-* **JWT** — handles authenticated user sessions and protected API requests.
-* **bcrypt** — securely hashes user passwords.
+* JWT
+* bcrypt
 
 ### AI
 
-* **Google Gemini API** — generates task suggestions and provides AI-based workload analysis.
+* Google Gemini API
 
 ### Email
 
-* **Brevo** — used for password-reset email delivery.
+* Brevo
 
 ### Notifications
 
-* **Browser Notifications API** — provides reminder and overdue-task notifications in supported browsers.
+* Browser Notifications API
 
-### Development & Deployment
+### Development and Version Control
 
-* **Visual Studio Code** — development environment.
-* **Git** — version control.
-* **GitHub** — source-code repository and project collaboration.
-* **Vercel** — frontend deployment, where applicable.
-
----
+* Visual Studio Code
+* Git
+* GitHub
+* Vercel
 
 ## How It Works
 
-The application follows a client-server approach.
+The React frontend communicates with the Express.js backend through REST APIs.
 
-The React frontend sends requests to the Express backend through REST APIs. The backend authenticates the user, processes the request, and uses Mongoose to interact with MongoDB.
+The backend handles authentication, task operations, AI requests, and email functionality. Mongoose is used to interact with MongoDB.
 
-The same backend also handles authentication, task operations, email functionality, and communication with the Gemini API.
+The application also communicates with Google Gemini for AI functionality and Brevo for password-reset email delivery.
 
 ## Project Structure
 
+The project is divided into two main parts.
+
 ### Client
 
-The client contains the React application, dashboard, task management interface, scheduling functionality, AI features, responsive styling, and frontend API communication.
+The client contains the React frontend, dashboard, task management, scheduling, AI features, responsive styling, and frontend API communication.
 
 ### Server
 
-The server contains the Express application, REST API routes, authentication logic, database models, task operations, AI integration, and email functionality.
+The server contains the Express backend, REST API routes, authentication logic, database models, task operations, AI integration, and email functionality.
 
 ## Environment Variables
 
-The application uses environment variables for sensitive configuration.
-Depending on the environment, these include values such as:
-MongoDB connection string
-JWT secret
-Gemini API key
-Brevo/email configuration
-Frontend URL
-Sensitive credentials should be stored in local `.env` files and **must not be committed to GitHub**.
+The application uses environment variables for sensitive configuration, including:
+
+* MongoDB connection string
+* JWT secret
+* Gemini API key
+* Brevo email configuration
+* Frontend URL
+
+Sensitive credentials should be stored in local environment files and must not be committed to GitHub.
 
 ## Installation
 
-Clone the repository and install the dependencies for both the frontend and backend.
+### Clone the Repository
 
-### Client
+```bash
+git clone https://github.com/Guptashrajal/smart-task-management.git
+cd smart-task-management
+```
+
+### Install Frontend Dependencies
 
 ```bash
 cd client
 npm install
+```
+
+### Start the Frontend
+
+```bash
 npm run dev
 ```
 
-### Server
+### Install Backend Dependencies
+
+Open a new terminal and run:
 
 ```bash
 cd server
 npm install
-npm start
 ```
 
-The exact backend command depends on the scripts defined in `server/package.json`.
+### Start the Backend
 
----
+```bash
+npm run dev
+```
+
+Make sure the required environment variables are configured before starting the application.
 
 ## Usage
 
-1. Register a new account or log in.
+1. Register or log in to your account.
 2. Create a task from the dashboard.
-3. Set its priority, category, due date, and reminder if required.
-4. Search, filter, or sort tasks.
+3. Set the priority, category, due date, and reminder.
+4. Search, filter, and sort tasks as required.
 5. Mark tasks as completed when finished.
-6. Check reminders and notifications for tasks that require attention.
-7. Use the AI Assistant to convert a goal into actionable tasks.
-8. Use the AI Summary to understand the current workload.
-
----
+6. Check reminders and notifications for tasks requiring attention.
+7. Use the AI Assistant to generate tasks from a goal.
+8. Use the AI Summary to understand your current workload.
 
 ## Future Improvements
-
-Potential future improvements include:
 
 * Push notifications
 * Recurring tasks
@@ -226,8 +236,6 @@ Potential future improvements include:
 * Offline task support
 * Additional personalization
 
----
-
 ## Conclusion
 
-AskTask combines traditional task management with reminders and AI assistance in a single productivity-focused application. It helps users organize their work, prioritize important tasks, track deadlines, manage reminders, and turn larger goals into actionable tasks using AI.
+AskTask combines task management, reminders, notifications, and AI assistance into a single productivity application. It helps users organize their work, prioritize important tasks, track deadlines, manage reminders, and convert larger goals into actionable tasks using AI.
